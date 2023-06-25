@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.gustavopsantos.reflex": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#4.3.2",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.visualstudio": "2.0.18",
     "com.unity.inputsystem": "1.4.4",
