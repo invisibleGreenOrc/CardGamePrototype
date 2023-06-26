@@ -18,13 +18,18 @@ namespace CodeBase.Unity
             _battlefieldService = battlefieldService;
 
             _game.LoadingStarted += OnLoadingStarted;
+            _game.HandSelectionStarted += OnHandSelectionStarted;
         }
 
         private void OnLoadingStarted()
         {
+            _battlefieldService.LoadCardResources();
             _battlefieldService.LoadPlayerDecks();
+        }
 
-            _game.StartHandSelecting();
+        private void OnHandSelectionStarted()
+        {
+            _battlefieldService.FillPlayerHands();
         }
     }
 }

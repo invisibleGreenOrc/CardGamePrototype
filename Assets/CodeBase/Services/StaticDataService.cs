@@ -10,12 +10,21 @@ namespace CodeBase.Services
 {
     public class StaticDataService : IStaticDataService
     {
+        private DeckData[] _decksStaticData;
+
+        private CardPackStaticData[] _cardPackStaticData;
+
+        public void LoadCardResources()
+        {
+            _decksStaticData = Resources.LoadAll<DeckData>("StaticData/Decks");
+            _cardPackStaticData = Resources.LoadAll<CardPackStaticData>("StaticData/Cards");
+        }
+
         public Dictionary<Player, Deck> GetDecks()
         {
-            var decksData = Resources.LoadAll<DeckData>("StaticData/Decks");
             var playerDecks = new Dictionary<Player, Deck>();
 
-            foreach (DeckData deckData in decksData)
+            foreach (DeckData deckData in _decksStaticData)
             {
                 var deck = CreateDeck(GetCards(deckData.CardIds));
                 playerDecks.TryAdd(deckData.Player, deck);
@@ -26,10 +35,9 @@ namespace CodeBase.Services
 
         private List<Card> GetCards(int[] ids)
         {
-            var cardPacksData = Resources.LoadAll<CardPackStaticData>("StaticData/Cards");
             var cards = new List<Card>();
 
-            foreach (CardPackStaticData cardPackData in cardPacksData)
+            foreach (CardPackStaticData cardPackData in _cardPackStaticData)
             {
                 foreach (CardData cardData in cardPackData.Cards.Where(card => ids.Contains(card.Id)))
                 {

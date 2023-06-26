@@ -7,5 +7,6 @@ namespace CodeBase.Services
     public interface IStaticDataService
     {
         public Dictionary<Player, Deck> GetDecks();
+        void LoadCardResources();
     }
 }

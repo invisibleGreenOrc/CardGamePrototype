@@ -7,6 +7,7 @@ namespace CodeBase.Unity
 {
     public class DeckView : MonoBehaviour
     {
+        [SerializeField]
         private Player _player;
 
         private IBattlefieldService _battlefieldService;
@@ -20,7 +21,7 @@ namespace CodeBase.Unity
 
         private void OnDecksLoaded()
         {
-            Debug.Log(_battlefieldService.PlayerDecks[Player.First].CardsCount);
+            Debug.Log(_battlefieldService.PlayerDecks[_player].CardsCount);
             Debug.Log(_battlefieldService.PlayerDecks[Player.Second].CardsCount);
         }
     }

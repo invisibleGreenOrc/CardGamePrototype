@@ -4,17 +4,22 @@ namespace CodeBase.Entities
 {
     public class Hand
     {
-        private List<Card> _cards = new();
+        public List<Card> Cards { get; private set; } = new();
+
+        public Hand(List<Card> cards)
+        {
+            Cards.AddRange(cards);
+        }
 
         public void AddCard(Card card)
         {
-            _cards.Add(card);
+            Cards.Add(card);
         }
 
         public Card TakeCard()
         {
-            Card card = _cards[0];
-            _cards.RemoveAt(0);
+            Card card = Cards[0];
+            Cards.RemoveAt(0);
             return card;
         }
 

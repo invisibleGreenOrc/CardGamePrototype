@@ -15,6 +15,12 @@ namespace CodeBase.Services
 
         public event Action DecksLoaded;
 
+        public event Action HandsFilled;
+
+        public void LoadCardResources();
+
         public void LoadPlayerDecks();
+
+        public void FillPlayerHands();
     }
 }
